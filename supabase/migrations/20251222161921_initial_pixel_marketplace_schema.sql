@@ -109,8 +109,10 @@ CREATE TABLE IF NOT EXISTS pixels (
   x integer NOT NULL,
   y integer NOT NULL,
   owner_id uuid REFERENCES profiles(id) ON DELETE SET NULL,
-  current_price numeric NOT NULL DEFAULT 1.00,
-  purchase_price numeric DEFAULT 1.00,
+  current_price numeric NOT NULL DEFAULT 0.
+001,
+  purchase_price numeric DEFAULT 0.
+001,
   content_type text DEFAULT 'empty' CHECK (content_type IN ('empty', 'ad', 'nft')),
   content_url text,
   nft_token_id text,

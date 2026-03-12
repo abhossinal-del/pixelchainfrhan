@@ -100,7 +100,7 @@ function calculateDynamicPrice(currentPrice: number, timesSold: number): number 
 
   const newPrice = currentPrice * demandMultiplier * (1 + liquidityFactor) * marketVolatility;
 
-  return Math.max(newPrice, 0.0001);
+  return Math.max(newPrice, 0.001);
 }
 
 function calculateLiquidityScore(timesSold: number): number {

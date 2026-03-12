@@ -5,11 +5,13 @@ import { PixelGrid } from './components/PixelGrid';
 import { PixelDetail } from './components/PixelDetail';
 import { Dashboard } from './components/Dashboard';
 import { Wallet } from './components/Wallet';
+import { Referral } from './components/Referral';
+import { Payment } from './components/Payment';
 import { MarketStats } from './components/MarketStats';
 import { Pixel } from './lib/supabase';
 
 function App() {
-  const [currentView, setCurrentView] = useState<'marketplace' | 'dashboard' | 'wallet'>('marketplace');
+  const [currentView, setCurrentView] = useState<'marketplace' | 'dashboard' | 'wallet' | 'referral' | 'payment'>('marketplace');
   const [selectedPixel, setSelectedPixel] = useState<Pixel | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -51,8 +53,9 @@ function App() {
           )}
 
           {currentView === 'dashboard' && <Dashboard key={refreshKey} />}
-
           {currentView === 'wallet' && <Wallet />}
+          {currentView === 'referral' && <Referral />}
+          {currentView === 'payment' && <Payment />}
         </main>
 
         <PixelDetail

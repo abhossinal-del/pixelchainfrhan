@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { LogOut, User, Wallet as WalletIcon, Menu, X, Grid3x3 } from 'lucide-react';
+import { LogOut, User, Wallet as WalletIcon, Menu, X, Grid3x3, Send, Users, CreditCard } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthModal } from './AuthModal';
 
 interface HeaderProps {
-  currentView: 'marketplace' | 'dashboard' | 'wallet';
-  onViewChange: (view: 'marketplace' | 'dashboard' | 'wallet') => void;
+  currentView: 'marketplace' | 'dashboard' | 'wallet' | 'referral' | 'payment';
+  onViewChange: (view: 'marketplace' | 'dashboard' | 'wallet' | 'referral' | 'payment') => void;
 }
 
 export function Header({ currentView, onViewChange }: HeaderProps) {
@@ -31,10 +31,23 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
                 <Grid3x3 className="text-white" size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">PixelMarket</h1>
-                <p className="text-xs text-slate-400">سوق تداول البكسلز الرقمية</p>
-              </div>
-            </div>
+                    <h1 className="text-2xl font-bold text-white">PixelMarket</h1>
+                    <p className="text-xs text-slate-400">سوق تداول البكسلز الرقمية</p>
+                  </div>
+                </div>
+
+                <div className="hidden lg:flex items-center ml-4">
+                  <a
+                    href="https://t.me/+-m2e9jcN2dZiYjY0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#229ED9] hover:bg-[#1d89bc] text-white p-2 rounded-full transition-all duration-200 shadow-lg flex items-center gap-2"
+                    title="انضم لمجموعة التلجرام"
+                  >
+                    <Send size={18} />
+                    <span className="text-xs font-bold">تلجرام</span>
+                  </a>
+                </div>
 
             <nav className="hidden md:flex items-center gap-2">
               <button
@@ -68,6 +81,32 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
                     }`}
                   >
                     المحفظة
+                  </button>
+                  <button
+                    onClick={() => onViewChange('referral')}
+                    className={`px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
+                      currentView === 'referral'
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
+                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <Users size={18} />
+                      الإحالة
+                    </div>
+                  </button>
+                  <button
+                    onClick={() => onViewChange('payment')}
+                    className={`px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
+                      currentView === 'payment'
+                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg'
+                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <CreditCard size={18} />
+                      شحن الرصيد
+                    </div>
                   </button>
                 </>
               )}
@@ -151,6 +190,41 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
                     >
                       المحفظة
                     </button>
+                    <button
+                      onClick={() => {
+                        onViewChange('referral');
+                        setShowMobileMenu(false);
+                      }}
+                      className={`w-full text-right px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${
+                        currentView === 'referral'
+                          ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                          : 'text-slate-300 hover:bg-slate-800'
+                      }`}
+                    >
+                      نظام الإحالة
+                    </button>
+                    <button
+                      onClick={() => {
+                        onViewChange('payment');
+                        setShowMobileMenu(false);
+                      }}
+                      className={`w-full text-right px-4 py-3 rounded-lg font-semibold transition-all duration-200 ${
+                        currentView === 'payment'
+                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white'
+                          : 'text-slate-300 hover:bg-slate-800'
+                      }`}
+                    >
+                      شحن الرصيد
+                    </button>
+                    <a
+                      href="https://t.me/+-m2e9jcN2dZiYjY0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full text-right px-4 py-3 bg-[#229ED9] text-white rounded-lg font-semibold flex items-center justify-between"
+                    >
+                      <span>انضم لمجموعة التلجرام</span>
+                      <Send size={18} />
+                    </a>
                     <button
                       onClick={handleSignOut}
                       className="w-full text-right px-4 py-3 bg-gradient-to-r from-red-600 to-rose-600 text-white rounded-lg font-semibold"

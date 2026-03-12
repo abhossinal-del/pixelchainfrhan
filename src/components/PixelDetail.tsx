@@ -85,7 +85,7 @@ export function PixelDetail({ pixel, onClose, onUpdate }: PixelDetailProps) {
             <div className="bg-slate-800 rounded-lg p-4">
               <div className="text-slate-400 text-sm mb-1">السعر الحالي</div>
               <div className="text-2xl font-bold text-emerald-400">
-                {pixel.current_price.toFixed(4)} ETH
+                ${pixel.current_price.toFixed(3)}
               </div>
             </div>
 
@@ -123,10 +123,10 @@ export function PixelDetail({ pixel, onClose, onUpdate }: PixelDetailProps) {
                     شراء هذا البكسل
                   </div>
                   <div className="text-blue-200 text-sm">
-                    العمولة: {calculateCommission(pixel.current_price).toFixed(4)} ETH (5%)
+                    العمولة: ${calculateCommission(pixel.current_price).toFixed(4)} (5%)
                   </div>
                   <div className="text-white font-bold mt-2">
-                    الإجمالي: {(pixel.current_price + calculateCommission(pixel.current_price)).toFixed(4)} ETH
+                    الإجمالي: ${(pixel.current_price + calculateCommission(pixel.current_price)).toFixed(4)}
                   </div>
                 </div>
                 <button
@@ -150,7 +150,7 @@ export function PixelDetail({ pixel, onClose, onUpdate }: PixelDetailProps) {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-amber-200 mb-2">
-                    السعر (ETH)
+                    السعر ($)
                   </label>
                   <input
                     type="number"
@@ -208,8 +208,7 @@ export function PixelDetail({ pixel, onClose, onUpdate }: PixelDetailProps) {
                   البكسل معروض للبيع
                 </div>
                 <div className="text-emerald-200">
-                  السعر: {pixel.current_price.toFixed(4)} ETH
-                </div>
+                  السعر: ${pixel.current_price.toFixed(3)}              </div>
               </div>
             </div>
           )}

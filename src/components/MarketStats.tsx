@@ -82,7 +82,7 @@ export function MarketStats() {
             <Zap className="text-emerald-400" size={18} />
             <div className="text-slate-400 text-sm">حجم التداول</div>
           </div>
-          <div className="text-2xl font-bold text-white">{stats.totalVolume.toFixed(2)} ETH</div>
+          <div className="text-2xl font-bold text-white">${stats.totalVolume.toFixed(2)}</div>
         </div>
 
         <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg p-4 border border-slate-700">
@@ -90,7 +90,7 @@ export function MarketStats() {
             <Activity className="text-amber-400" size={18} />
             <div className="text-slate-400 text-sm">متوسط السعر</div>
           </div>
-          <div className="text-2xl font-bold text-white">{stats.averagePrice.toFixed(4)} ETH</div>
+          <div className="text-2xl font-bold text-white">${stats.averagePrice.toFixed(3)}</div>
           <div
             className={`text-xs mt-1 ${
               stats.priceChange24h >= 0 ? 'text-emerald-400' : 'text-red-400'
